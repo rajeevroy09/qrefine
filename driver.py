@@ -682,16 +682,15 @@ def opt(xray_structure,
     xray_structure=xray_structure, results=results)
 
 
-def run_gradient(calculator,params):
+def run_gradient(calculator,results,xray_structure):
+    try:
+      clustering = calculator.restraints_manager.clustering
+    except :
+      clustering = False
+    if(clustering):
+      cluster_qm_update = clustering_update(
+        calculator.xray_structure.sites_cart(), results.log, \
+        params.rmsd_tolerance * 100)
     eg=calculator.target_and_gradients(x = calculator.x)
-    g=list(eg[1])
-    return g
-
-def gtest(params,
-        results,
-        calculator):
-  g=run_gradient(
-      calculator            = calculator,
-      params                = params)
-  return g
+    return list(eg[1])
 

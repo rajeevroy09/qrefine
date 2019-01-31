@@ -226,7 +226,7 @@ class fragments(object):
                                                      atoms_in_one_fragment, ph)
         fragment_super_atoms_in_ph.append(atoms_in_one_fragment)
         molecules_in_fragments.append(molecules_in_one_fragment)
-        if(0):
+        if(1):
           print i, "atoms in cluster: ", atoms_in_one_cluster
         if True:
           atoms = self.pdb_hierarchy_super.atoms()
